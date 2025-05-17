@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:TermTracker.Models"
+             xmlns:converters="clr-namespace:TermTracker.Converters"
              x:Class="TermTracker.Views.TermDetailPage"
              Title="{Binding TermTitle}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:CourseSelectionConverter x:Key="CourseSelectionConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ScrollView>
         <VerticalStackLayout Padding="15" Spacing="10">
@@ -11,27 +19,45 @@
             <Button Text="Add New Course"
                     Command="{Binding AddCourseCommand}" />
 
-
             <CollectionView ItemsSource="{Binding Courses}"
-                SelectionMode="Single"
-                SelectionChanged="OnCourseSelected">
-
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedCourse, Mode=TwoWay}">
 
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame BorderColor="DarkGray" CornerRadius="10" Padding="10" Margin="5">
+                    <DataTemplate x:DataType="models:Course">
+                        <Frame Padding="10"
+                               Margin="5"
+                               CornerRadius="10"
+                               BorderColor="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}},
+                                                     Path=BindingContext.SelectedCourse,
+                                                     Converter={StaticResource CourseSelectionConverter},
+                                                     ConverterParameter={Binding .}}">
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}},
+                                                                       Path=BindingContext.SelectCourseCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+
                             <VerticalStackLayout>
                                 <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />
-                                <Label Text="Tap to edit" FontSize="12" TextColor="Gray" />
+                                <Label Text="Tap to select" FontSize="12" TextColor="Gray" />
                                 <Label Text="{Binding Status}" />
                                 <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" />
                                 <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" />
-                                
                             </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <Button Text="Update Course"
+                    Command="{Binding UpdateSelectedCourseCommand}" />
+
+            <Button Text="Delete Course"
+                    Command="{Binding DeleteSelectedCourseCommand}"
+                    TextColor="Red" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+
