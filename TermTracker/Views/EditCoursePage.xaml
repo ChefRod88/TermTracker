@@ -1,0 +1,23 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TermTracker.Views.EditCoursePage"
+             Title="Edit Course">
+
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Entry Placeholder="Course Title" Text="{Binding Title}" />
+
+            <DatePicker Date="{Binding StartDate}" />
+            <DatePicker Date="{Binding EndDate}" />
+
+            <Picker Title="Status" ItemsSource="{Binding StatusOptions}" SelectedItem="{Binding SelectedStatus}" />
+
+            <Editor Placeholder="Notes" HeightRequest="100" Text="{Binding Notes}" />
+
+            <Button Text="Save Changes" Command="{Binding SaveCommand}" />
+            <Button Text="Delete Course" Command="{Binding DeleteCommand}" TextColor="Red" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+

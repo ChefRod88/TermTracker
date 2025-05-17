@@ -12,12 +12,17 @@
                     Command="{Binding AddCourseCommand}" />
 
 
-            <CollectionView ItemsSource="{Binding Courses}">
+            <CollectionView ItemsSource="{Binding Courses}"
+                SelectionMode="Single"
+                SelectionChanged="OnCourseSelected">
+
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="DarkGray" CornerRadius="10" Padding="10" Margin="5">
                             <VerticalStackLayout>
                                 <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />
+                                <Label Text="Tap to edit" FontSize="12" TextColor="Gray" />
                                 <Label Text="{Binding Status}" />
                                 <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" />
                                 <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" />

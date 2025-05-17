@@ -21,4 +21,24 @@ public partial class TermDetailPage : ContentPage
     {
         InitializeComponent();
     }
+
+    private async void OnCourseSelected(object sender, SelectionChangedEventArgs e)
+    {
+        Console.WriteLine("Course card tapped.");
+
+        if (e.CurrentSelection.FirstOrDefault() is Course selectedCourse)
+        {
+            Console.WriteLine($"Selected course: {selectedCourse.Title}");
+
+            await Shell.Current.GoToAsync(nameof(EditCoursePage), true, new Dictionary<string, object>
+        {
+            { "SelectedCourse", selectedCourse }
+        });
+
+            ((CollectionView)sender).SelectedItem = null;
+        }
+    }
+
+
+
 }

@@ -9,6 +9,8 @@ namespace TermTracker
             InitializeComponent();
             Routing.RegisterRoute(nameof(TermDetailPage), typeof(TermDetailPage));
             Routing.RegisterRoute(nameof(AddCoursePage), typeof(AddCoursePage));
+            Routing.RegisterRoute(nameof(EditCoursePage), typeof(EditCoursePage));
+
 
 
         }
