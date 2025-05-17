@@ -21,11 +21,19 @@
                                 <Label Text="{Binding Type}" />
                                 <Label Text="{Binding DueDate, StringFormat='Due: {0:MM/dd/yyyy}'}" />
                                 <Label Text="{Binding HasNotification, StringFormat='Notify: {0}'}" />
+
+                                <Button Text="Delete"
+                            TextColor="White"
+                            BackgroundColor="DarkRed"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}},
+                                              Path=BindingContext.DeleteAssessmentCommand}"
+                            CommandParameter="{Binding .}" />
                             </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

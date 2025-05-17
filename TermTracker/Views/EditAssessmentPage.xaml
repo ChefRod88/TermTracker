@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:TermTracker.Models"
+             x:Class="TermTracker.Views.EditAssessmentPage"
+             Title="Edit Assessment">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Assessment Title" FontAttributes="Bold" />
+            <Entry Text="{Binding Title}" Placeholder="Edit title" />
+
+            <Label Text="Assessment Type" FontAttributes="Bold" />
+            <Picker ItemsSource="{Binding TypeOptions}"
+                    SelectedItem="{Binding SelectedType}"
+                    Title="Select type"
+                    BackgroundColor="LightGray" />
+
+            <Label Text="Due Date" FontAttributes="Bold" />
+            <HorizontalStackLayout Spacing="10">
+                <Image Source="calendar.png" HeightRequest="24" WidthRequest="24" />
+                <DatePicker Date="{Binding DueDate}" />
+            </HorizontalStackLayout>
+
+            <Label Text="Enable Notification?" FontAttributes="Bold" />
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                <Image Source="bell.png" HeightRequest="24" WidthRequest="24" />
+                <Switch IsToggled="{Binding HasNotification}" />
+            </HorizontalStackLayout>
+
+            <Button Text="Update Assessment"
+                    Command="{Binding UpdateCommand}"
+                    BackgroundColor="Green"
+                    TextColor="White" />
+
+            <Button Text="Delete Assessment"
+                    Command="{Binding DeleteCommand}"
+                    BackgroundColor="Red"
+                    TextColor="White" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

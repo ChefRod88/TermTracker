@@ -37,5 +37,16 @@ namespace TermTracker.ViewModels
             foreach (var a in list)
                 Assessments.Add(a);
         }
+
+        public ICommand DeleteAssessmentCommand => new Command<Assessment>(async (assessment) =>
+        {
+            bool confirm = await Shell.Current.DisplayAlert("Delete", $"Delete '{assessment.Title}'?", "Yes", "No");
+            if (!confirm) return;
+
+            var db = await DatabaseService.GetConnection();
+            await db.DeleteAsync(assessment);
+            Assessments.Remove(assessment);
+        });
+
     }
 }

@@ -22,5 +22,19 @@ public partial class AssessmentListPage : ContentPage
     {
         InitializeComponent();
     }
+
+    private async void OnAssessmentSelected(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection.FirstOrDefault() is Assessment selected)
+        {
+            await Shell.Current.GoToAsync(nameof(EditAssessmentPage), true, new Dictionary<string, object>
+        {
+            { "SelectedAssessment", selected }
+        });
+
+            ((CollectionView)sender).SelectedItem = null;
+        }
+    }
+
 }
 

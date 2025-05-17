@@ -13,6 +13,8 @@ namespace TermTracker
             Routing.RegisterRoute(nameof(AssessmentListPage), typeof(AssessmentListPage));
             Routing.RegisterRoute(nameof(AddAssessmentPage), typeof(AddAssessmentPage));
             Routing.RegisterRoute(nameof(AddAssessmentPage), typeof(AddAssessmentPage));
+            Routing.RegisterRoute(nameof(EditAssessmentPage), typeof(EditAssessmentPage));
+
 
 
 

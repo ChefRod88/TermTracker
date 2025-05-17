@@ -6,7 +6,7 @@
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
-            <Label Text="Good Morning, Rodney"
+            <Label Text="Welcome to TermTracker!"
                    FontSize="24"
                    HorizontalOptions="Center" />
 
