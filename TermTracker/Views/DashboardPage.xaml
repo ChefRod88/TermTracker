@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TermTracker.Views.DashboardPage"
+             Title="Dashboard">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Good Morning, Rodney"
+                   FontSize="24"
+                   HorizontalOptions="Center" />
+
+            <Frame BorderColor="DodgerBlue" CornerRadius="10" Padding="15">
+                <StackLayout>
+                    <Label Text="Term 5" FontAttributes="Bold"/>
+                    <Label Text="02/01/25 - 07/31/25"/>
+                    <Label Text="10 weeks remaining"/>
+                </StackLayout>
+            </Frame>
+
+            <Label Text="Active Courses" FontSize="18" />
+            <Label Text="(Carousel goes here in future)" FontSize="14" TextColor="Gray" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
