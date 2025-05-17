@@ -1,8 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using TermTracker.Models;       // ✅ Fixes Term not found
 using TermTracker.Services;     // ✅ Fixes DatabaseService not found
+using TermTracker.Views;
+
 
 
 
@@ -46,5 +49,18 @@ namespace TermTracker.ViewModels
 
         protected void OnPropertyChanged([CallerMemberName] string name = "")
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        public ICommand ViewCoursesCommand => new Command(async () =>
+        {
+            if (ActiveTerm != null)
+            {
+                await Shell.Current.GoToAsync(nameof(TermDetailPage), true,
+                    new Dictionary<string, object>
+                    {
+                { "SelectedTerm", ActiveTerm }
+                    });
+            }
+        });
     }
+
 }

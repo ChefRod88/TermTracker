@@ -18,6 +18,9 @@
                     <Label Text="{Binding ActiveTerm.StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" />
                     <Label Text="{Binding ActiveTerm.EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" />
                     <Label Text="10 weeks remaining" />
+                    <Button Text="View Courses"
+                            Command="{Binding ViewCoursesCommand}" />
+
                 </StackLayout>
             </Frame>
 
