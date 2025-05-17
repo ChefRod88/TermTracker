@@ -12,9 +12,12 @@
 
             <Frame BorderColor="DodgerBlue" CornerRadius="10" Padding="15">
                 <StackLayout>
-                    <Label Text="Term 5" FontAttributes="Bold"/>
-                    <Label Text="02/01/25 - 07/31/25"/>
-                    <Label Text="10 weeks remaining"/>
+                    <Label Text="{Binding ActiveTerm.Title}"
+                           FontSize="20"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding ActiveTerm.StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" />
+                    <Label Text="{Binding ActiveTerm.EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" />
+                    <Label Text="10 weeks remaining" />
                 </StackLayout>
             </Frame>
 
@@ -23,3 +26,4 @@
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+
