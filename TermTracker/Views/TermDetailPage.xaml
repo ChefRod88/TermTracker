@@ -19,6 +19,13 @@
             <Button Text="Add New Course"
                     Command="{Binding AddCourseCommand}" />
 
+            <Button Text="Manage Assessments"
+            Command="{Binding ManageAssessmentsCommand}"
+            BackgroundColor="LightBlue"
+            TextColor="Black"
+            CornerRadius="8" />
+
+
             <CollectionView ItemsSource="{Binding Courses}"
                             SelectionMode="Single"
                             SelectedItem="{Binding SelectedCourse, Mode=TwoWay}">
