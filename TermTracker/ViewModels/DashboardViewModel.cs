@@ -55,12 +55,10 @@ namespace TermTracker.ViewModels
             if (ActiveTerm != null)
             {
                 await Shell.Current.GoToAsync(nameof(TermDetailPage), true,
-                    new Dictionary<string, object>
-                    {
-                { "SelectedTerm", ActiveTerm }
-                    });
+                    new Dictionary<string, object> { { "SelectedTerm", ActiveTerm } });
             }
         });
+
     }
 
 }

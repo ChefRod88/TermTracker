@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TermTracker.Views.LandingPage"
+             BackgroundColor="#5E4B8B"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <VerticalStackLayout x:Name="LogoStack"
+                             Opacity="0"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Spacing="20">
+
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Image Source="gradcap.png" HeightRequest="50" WidthRequest="50" />
+                <Label Text="Term Tracker"
+                       FontSize="36"
+                       TextColor="White"
+                       FontAttributes="Bold" />
+                <Image Source="diploma.png" HeightRequest="50" WidthRequest="50" />
+            </HorizontalStackLayout>
+
+            <ActivityIndicator IsRunning="True" Color="White" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
+
+

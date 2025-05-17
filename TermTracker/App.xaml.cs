@@ -1,4 +1,5 @@
 ﻿using TermTracker.Services;
+using TermTracker.Views;
 
 namespace TermTracker
 {
@@ -12,8 +13,13 @@ namespace TermTracker
 
             // Seed fake data
             Task.Run(async () => await DatabaseService.SeedSampleData());
+
+            // Optional: force start on LandingPage
+            Routing.RegisterRoute(nameof(LandingPage), typeof(LandingPage));
+            Shell.Current.GoToAsync($"//{nameof(LandingPage)}");
         }
+    }
 
 
     }
-}
+

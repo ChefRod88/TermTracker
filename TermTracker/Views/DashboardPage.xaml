@@ -1,32 +1,61 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:TermTracker.Models"
              x:Class="TermTracker.Views.DashboardPage"
              Title="Dashboard">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
-            <Label Text="Welcome to TermTracker!"
+
+            <!-- Welcome Message -->
+            <Label Text="Welcome to Term Tracker! 🎓"
                    FontSize="24"
+                   FontAttributes="Bold"
                    HorizontalOptions="Center" />
 
-            <Frame BorderColor="DodgerBlue" CornerRadius="10" Padding="15">
-                <StackLayout>
-                    <Label Text="{Binding ActiveTerm.Title}"
-                           FontSize="20"
-                           FontAttributes="Bold" />
-                    <Label Text="{Binding ActiveTerm.StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" />
-                    <Label Text="{Binding ActiveTerm.EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" />
-                    <Label Text="10 weeks remaining" />
-                    <Button Text="View Courses"
-                            Command="{Binding ViewCoursesCommand}" />
+            <Label Text="Plan, track, and conquer your degree — one term at a time."
+                   FontSize="16"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
 
-                </StackLayout>
-            </Frame>
+            <!-- Term Cards List -->
+            <CollectionView ItemsSource="{Binding Terms}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Term">
+                        <Frame BorderColor="DodgerBlue"
+                               CornerRadius="10"
+                               Padding="15"
+                               Margin="0,10">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Title}" FontSize="20" FontAttributes="Bold" />
+                                <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" />
+                                <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" />
+                                <Label Text="{Binding RemainingWeeks}" />
 
+                                <Button Text="View Courses"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ViewCoursesCommand}"
+                                        CommandParameter="{Binding .}" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Placeholder for Carousel -->
             <Label Text="Active Courses" FontSize="18" />
             <Label Text="(Carousel goes here in future)" FontSize="14" TextColor="Gray" />
+
+            <!-- Add Term Button -->
+            <Button Text="+ Add Term"
+                    FontAttributes="Bold"
+                    CornerRadius="25"
+                    Padding="10"
+                    BackgroundColor="DarkGreen"
+                    TextColor="White"
+                    Command="{Binding AddTermCommand}"
+                    HorizontalOptions="End"
+                    Margin="0,20,10,20"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
-

@@ -96,19 +96,16 @@ namespace TermTracker.ViewModels
             SelectedCourse = course;
         });
 
-        public ICommand ManageAssessmentsCommand => new Command(async () =>
+        public ICommand ManageAssessmentsCommand => new Command<Course>(async (selectedCourse) =>
         {
-            if (SelectedCourse == null)
+            if (selectedCourse != null)
             {
-                await Shell.Current.DisplayAlert("Error", "Please select a course to view assessments.", "OK");
-                return;
+                await Shell.Current.GoToAsync(nameof(AssessmentListPage), true,
+                    new Dictionary<string, object> { { "SelectedCourse", selectedCourse } });
             }
-
-            await Shell.Current.GoToAsync(nameof(AssessmentListPage), true, new Dictionary<string, object>
-    {
-        { "SelectedCourse", SelectedCourse }
-    });
         });
+
+
 
     }
 }
