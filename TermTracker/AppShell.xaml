@@ -4,12 +4,15 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:TermTracker.Views"
+    xmlns:local="clr-namespace:TermTracker.Views"
+
     Shell.FlyoutBehavior="Disabled">
 
     <!-- TabBar for primary dashboard -->
     <TabBar>
-        <ShellContent Title="Dashboard"
-                      ContentTemplate="{DataTemplate views:DashboardPage}" />
+        <ShellContent Title="Dashboard" ContentTemplate="{DataTemplate views:DashboardPage}" />
+        <ShellContent Route="TermDetailPage" ContentTemplate="{DataTemplate local:TermDetailPage}" />
+
     </TabBar>
 </Shell>
 

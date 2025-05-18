@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using TermTracker.Models;
 using TermTracker.Services;
+using TermTracker.Views;
 
 namespace TermTracker.ViewModels
 {
@@ -48,7 +49,8 @@ namespace TermTracker.ViewModels
                 var db = await DatabaseService.GetConnection();
                 await db.InsertAsync(newCourse);
 
-                await Shell.Current.GoToAsync(".."); // Navigate back
+                await Shell.Current.GoToAsync(nameof(AddCoursePage));
+                // Navigate back
             });
         }
     }
