@@ -12,8 +12,12 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
+    
+
+
     <ScrollView>
         <VerticalStackLayout Padding="15" Spacing="10">
+            <Button Text="← Back" Command="{Binding GoBackCommand}" />
             <Label Text="Courses in this Term" FontSize="20" FontAttributes="Bold" />
 
             <Button Text="Add New Course"

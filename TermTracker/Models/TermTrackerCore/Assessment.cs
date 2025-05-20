@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TermTracker.Models
+namespace TermTracker.Models.TermTrackerCore
 {
     public class Assessment
     {

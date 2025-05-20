@@ -1,0 +1,21 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             x:Class="TermTracker.Views.StudentLounge.ChatRoomPage"
+             Title="Study Group Chat">
+
+    <StackLayout Padding="10">
+        <CollectionView ItemsSource="{Binding Messages}" HeightRequest="500">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="5" Margin="2" BorderColor="LightGray">
+                        <Label Text="{Binding Sender}" FontAttributes="Bold" />
+                        <Label Text="{Binding Message}" />
+                        <Label Text="{Binding Timestamp}" FontSize="10" TextColor="Gray" HorizontalOptions="End"/>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Entry Placeholder="Type a message..." Text="{Binding NewMessage}" />
+        <Button Text="Send" Command="{Binding SendMessageCommand}" />
+    </StackLayout>
+</ContentPage>

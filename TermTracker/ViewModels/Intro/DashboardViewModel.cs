@@ -2,9 +2,11 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using TermTracker.Models;       // ✅ Fixes Term not found
 using TermTracker.Services;     // ✅ Fixes DatabaseService not found
 using TermTracker.Views;
+using TermTracker.ViewModels;
+using TermTracker.Models.TermTrackerCore;
+
 
 
 
@@ -12,7 +14,7 @@ using TermTracker.Views;
 
 namespace TermTracker.ViewModels
 {
-    public class DashboardViewModel : INotifyPropertyChanged
+    public class DashboardViewModel : BaseViewModel
     {
         public ObservableCollection<Term> Terms { get; set; } = new();
 
@@ -58,6 +60,7 @@ namespace TermTracker.ViewModels
                     new Dictionary<string, object> { { "SelectedTerm", ActiveTerm } });
             }
         });
+    
 
     }
 

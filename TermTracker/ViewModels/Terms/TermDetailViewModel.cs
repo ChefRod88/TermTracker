@@ -2,13 +2,14 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using TermTracker.Models;
+using TermTracker.Models.TermTrackerCore;
 using TermTracker.Services;
 using TermTracker.Views;
 
-namespace TermTracker.ViewModels
+
+namespace TermTracker.ViewModels.Terms
 {
-    public class TermDetailViewModel : INotifyPropertyChanged
+    public class TermDetailViewModel : BaseViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = "") =>

@@ -1,12 +1,13 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using TermTracker.Models;
+using TermTracker.Models.TermTrackerCore;
 using TermTracker.Services;
 using TermTracker.Views;
 
-namespace TermTracker.ViewModels
+
+namespace TermTracker.ViewModels.Assessments
 {
-    public class AssessmentListViewModel
+    public class AssessmentListViewModel : BaseViewModel
     {
         private Course _course;
 
@@ -47,6 +48,7 @@ namespace TermTracker.ViewModels
             await db.DeleteAsync(assessment);
             Assessments.Remove(assessment);
         });
+       
 
     }
 }

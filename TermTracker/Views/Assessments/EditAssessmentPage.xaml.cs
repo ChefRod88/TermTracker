@@ -1,4 +1,4 @@
-using TermTracker.Models;
+using TermTracker.Models.TermTrackerCore;
 using TermTracker.ViewModels;
 
 namespace TermTracker.Views;

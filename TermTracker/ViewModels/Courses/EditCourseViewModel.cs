@@ -1,11 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using TermTracker.Models;
+using TermTracker.Models.TermTrackerCore;
 using TermTracker.Services;
 
-namespace TermTracker.ViewModels
+
+namespace TermTracker.ViewModels.Courses
 {
-    public class EditCourseViewModel
+    public class EditCourseViewModel : BaseViewModel
     {
         private Course _course;
 

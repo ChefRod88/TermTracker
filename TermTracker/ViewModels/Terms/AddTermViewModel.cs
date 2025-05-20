@@ -3,9 +3,10 @@ using System.Windows.Input;
 using TermTracker.Models;
 using TermTracker.Services;
 
-namespace TermTracker.ViewModels
+
+namespace TermTracker.ViewModels.Terms
 {
-    public class AddTermViewModel
+    public class AddTermViewModel : BaseViewModel
     {
         public string Title { get; set; }
         public DateTime StartDate { get; set; } = DateTime.Today;
@@ -41,5 +42,7 @@ namespace TermTracker.ViewModels
                 await Shell.Current.GoToAsync("..");
             });
         }
+       
+
     }
 }

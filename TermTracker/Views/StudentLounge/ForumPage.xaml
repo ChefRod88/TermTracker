@@ -1,0 +1,21 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             x:Class="TermTracker.Views.StudentLounge.ForumPage"
+             Title="Student Forum">
+    <StackLayout Padding="10">
+        <CollectionView ItemsSource="{Binding ForumPosts}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="LightGray" Padding="10">
+                        <Label Text="{Binding Author}" FontAttributes="Bold"/>
+                        <Label Text="{Binding Content}" />
+                        <Label Text="{Binding Timestamp}" FontSize="10" TextColor="Gray"/>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Editor Placeholder="What's on your mind?" Text="{Binding NewPostContent}" AutoSize="TextChanges"/>
+        <Button Text="Post" Command="{Binding PostCommand}" />
+    </StackLayout>
+</ContentPage>
+

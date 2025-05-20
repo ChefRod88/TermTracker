@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SQLite;
-using TermTracker.Models;
+using TermTracker.Models.TermTrackerCore;
 
 namespace TermTracker.Services
 {

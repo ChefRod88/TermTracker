@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using Microsoft.Maui.Controls;
-using TermTracker.Models;
+using TermTracker.Models.TermTrackerCore;
 
 namespace TermTracker.Converters
 {

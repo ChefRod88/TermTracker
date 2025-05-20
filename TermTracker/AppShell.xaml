@@ -15,5 +15,24 @@
 
     </TabBar>
 </Shell>
+<!-- Register the new pages for Student Lounge: -->
+<Shell>
+    <TabBar>
+        <Tab Title="Dashboard" Icon="dashboard.png">
+            <ShellContent ContentTemplate="{DataTemplate views:DashboardPage}" />
+        </Tab>
+
+        <Tab Title="Student Lounge" Icon="chat.png">
+            <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
+        </Tab>
+
+        <Tab Title="Messages" Icon="messages.png">
+            <ShellContent ContentTemplate="{DataTemplate views:ChatListPage}" />
+        </Tab>
+    </TabBar>
+</Shell>
+
+    
+   
 
 

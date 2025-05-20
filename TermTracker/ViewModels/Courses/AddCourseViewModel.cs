@@ -1,12 +1,13 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using TermTracker.Models;
+using TermTracker.Models.TermTrackerCore;
 using TermTracker.Services;
 using TermTracker.Views;
 
-namespace TermTracker.ViewModels
+
+namespace TermTracker.ViewModels.Courses
 {
-    public class AddCourseViewModel
+    public class AddCourseViewModel : BaseViewModel
     {
         private Term _term;
 
@@ -53,5 +54,7 @@ namespace TermTracker.ViewModels
                 // Navigate back
             });
         }
+     
+
     }
 }

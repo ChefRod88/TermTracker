@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using TermTracker.Models;
+using TermTracker.Models.TermTrackerCore;
 using TermTracker.Services;
 
-namespace TermTracker.ViewModels
+
+namespace TermTracker.ViewModels.Assessments
 {
-    public class AddAssessmentViewModel
+    public class AddAssessmentViewModel : BaseViewModel
     {
         private Course _course;
 
@@ -53,6 +54,10 @@ namespace TermTracker.ViewModels
             {
                 await Shell.Current.GoToAsync("..");
             });
+
+
         }
+       
+
     }
 }
