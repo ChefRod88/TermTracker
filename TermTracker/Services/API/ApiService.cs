@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TermTracker.Services
+namespace TermTracker.Services.API
 {
     internal class ApiService
     {

@@ -1,55 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using TermTracker.Models.StudentLounge;
+using TermTracker.Services;
 
 namespace TermTracker.ViewModels.StudentLounge
 {
     public class ForumViewModel : BaseViewModel
     {
+        private readonly ForumService _forumService;
+
         public ObservableCollection<ForumPost> ForumPosts { get; set; } = new();
         public string NewPostContent { get; set; }
 
         public ICommand PostCommand { get; }
 
-        public ForumViewModel()
+        public ForumViewModel(ForumService service)
         {
-            PostCommand = new Command(Post);
+            _forumService = service;
+            PostCommand = new Command(async () => await CreatePost());
             LoadPosts();
         }
 
-        private void LoadPosts()
+        private async void LoadPosts()
         {
-            // Dummy data for now
-            ForumPosts.Add(new ForumPost
-            {
-                Author = "Rodney C.",
-                Content = "Hey, anyone working on Assessment 2?",
-                Timestamp = DateTime.Now,
-                Tag = "#Assessment"
-            });
+            var posts = await _forumService.GetPostsAsync();
+            ForumPosts.Clear();
+            foreach (var post in posts)
+                ForumPosts.Add(post);
         }
 
-        private void Post()
+        private async Task CreatePost()
         {
             if (string.IsNullOrWhiteSpace(NewPostContent))
                 return;
 
-            ForumPosts.Insert(0, new ForumPost
+            var post = new ForumPost
             {
-                Author = "You",
+                Author = "Rodney C.", // Replace later with logged-in user
                 Content = NewPostContent,
-                Timestamp = DateTime.Now,
+                Timestamp = DateTime.UtcNow,
                 Tag = "#General"
-            });
+            };
 
-            NewPostContent = string.Empty;
-            OnPropertyChanged(nameof(NewPostContent));
+            if (await _forumService.CreatePostAsync(post))
+            {
+                ForumPosts.Insert(0, post);
+                NewPostContent = string.Empty;
+                OnPropertyChanged(nameof(NewPostContent));
+            }
         }
     }
-
 }
