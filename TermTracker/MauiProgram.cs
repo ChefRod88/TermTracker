@@ -19,7 +19,7 @@ namespace TermTracker
             builder.Services.AddSingleton(sp =>
                 new HttpClient
                 {
-                    BaseAddress = new Uri("https://localhost:7009/") // 🔁 Replace with Azure URL after deployment
+                    BaseAddress = new Uri("https://localhost:7009/") // 🔁 Replace with Azure URL after deployment//
                 });
 
             builder.Services.AddSingleton<ForumService>();
