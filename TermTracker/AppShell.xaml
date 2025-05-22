@@ -5,31 +5,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:TermTracker.Views"
     xmlns:local="clr-namespace:TermTracker.Views"
-
     Shell.FlyoutBehavior="Disabled">
 
-    <!-- TabBar for primary dashboard -->
+    <!-- 📌 TabBar for full app navigation -->
     <TabBar>
-        <ShellContent Title="Dashboard" ContentTemplate="{DataTemplate views:DashboardPage}" />
-        <ShellContent Route="TermDetailPage" ContentTemplate="{DataTemplate local:TermDetailPage}" />
-
-    </TabBar>
-</Shell>
-<!-- Register the new pages for Student Lounge: -->
-<Shell>
-    <TabBar>
+        <!-- 🏠 Dashboard -->
         <Tab Title="Dashboard" Icon="dashboard.png">
             <ShellContent ContentTemplate="{DataTemplate views:DashboardPage}" />
         </Tab>
 
+        <!-- 📘 Term Details -->
+        <Tab Title="Term Detail">
+            <ShellContent Route="TermDetailPage" ContentTemplate="{DataTemplate local:TermDetailPage}" />
+        </Tab>
+
+        <!-- 💬 Student Lounge -->
         <Tab Title="Student Lounge" Icon="chat.png">
             <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
         </Tab>
 
+        <!-- 📩 Messages -->
         <Tab Title="Messages" Icon="messages.png">
             <ShellContent ContentTemplate="{DataTemplate views:ChatListPage}" />
         </Tab>
     </TabBar>
+
 </Shell>
 
     
