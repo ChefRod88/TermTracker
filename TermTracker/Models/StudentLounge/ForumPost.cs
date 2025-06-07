@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace TermTracker.Models.StudentLounge
 {
+    /// <summary>
+    /// Represents a forum post made by a student.
+    /// </summary>
     public class ForumPost
     {
         public int PostId { get; set; }
@@ -16,3 +19,4 @@ namespace TermTracker.Models.StudentLounge
     }
 
 }
+

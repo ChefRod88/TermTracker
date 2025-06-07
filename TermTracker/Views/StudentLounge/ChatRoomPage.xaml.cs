@@ -1,9 +1,15 @@
 namespace TermTracker.Views.StudentLounge;
 
+/// <summary>
+/// Real-time chat room page.
+/// </summary>
 public partial class ChatRoomPage : ContentPage
 {
-	public ChatRoomPage()
-	{
-		InitializeComponent();
-	}
+        /// <summary>
+        /// Initializes the chat room page.
+        /// </summary>
+        public ChatRoomPage()
+        {
+            InitializeComponent();
+        }
 }

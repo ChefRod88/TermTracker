@@ -8,7 +8,7 @@
                 <DataTemplate>
                     <Frame Padding="5" Margin="2" BorderColor="LightGray">
                         <Label Text="{Binding Sender}" FontAttributes="Bold" />
-                        <Label Text="{Binding Message}" />
+                        <Label Text="{Binding Content}" />
                         <Label Text="{Binding Timestamp}" FontSize="10" TextColor="Gray" HorizontalOptions="End"/>
                     </Frame>
                 </DataTemplate>

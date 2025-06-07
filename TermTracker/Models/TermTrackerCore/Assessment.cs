@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace TermTracker.Models.TermTrackerCore
 {
+    /// <summary>
+    /// Represents an assessment for a course stored in SQLite.
+    /// </summary>
     public class Assessment
     {
         [PrimaryKey, AutoIncrement]
@@ -21,3 +24,4 @@ namespace TermTracker.Models.TermTrackerCore
         public bool HasNotification { get; set; }
     }
 }
+

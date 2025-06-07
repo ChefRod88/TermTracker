@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace TermTracker.Models.StudentLounge
 {
+    /// <summary>
+    /// Model representing a chat message in the student lounge.
+    /// </summary>
     public class ChatMessage
     {
         public int Id { get; set; }
@@ -15,3 +18,4 @@ namespace TermTracker.Models.StudentLounge
     }
 
 }
+

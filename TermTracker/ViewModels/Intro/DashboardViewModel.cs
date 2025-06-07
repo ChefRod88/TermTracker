@@ -14,6 +14,10 @@ using TermTracker.Models.TermTrackerCore;
 
 namespace TermTracker.ViewModels
 {
+    /// <summary>
+    /// View model for the dashboard screen.  Displays the list of
+    /// available terms and handles navigation to other pages.
+    /// </summary>
     public class DashboardViewModel : BaseViewModel
     {
         public ObservableCollection<Term> Terms { get; set; } = new();
@@ -29,11 +33,18 @@ namespace TermTracker.ViewModels
             }
         }
 
+        /// <summary>
+        /// Initializes the view model and loads initial term data.
+        /// </summary>
         public DashboardViewModel()
         {
             LoadData();
         }
 
+        /// <summary>
+        /// Loads all terms from the SQLite database into the observable
+        /// collection. The most recent term is set as the active term.
+        /// </summary>
         public async void LoadData()
         {
             var db = await DatabaseService.GetConnection();
@@ -59,6 +70,14 @@ namespace TermTracker.ViewModels
                 await Shell.Current.GoToAsync(nameof(TermDetailPage), true,
                     new Dictionary<string, object> { { "SelectedTerm", ActiveTerm } });
             }
+        });
+
+        /// <summary>
+        /// Navigates to the page for adding a new term.
+        /// </summary>
+        public ICommand AddTermCommand => new Command(async () =>
+        {
+            await Shell.Current.GoToAsync(nameof(AddTermPage));
         });
     
 

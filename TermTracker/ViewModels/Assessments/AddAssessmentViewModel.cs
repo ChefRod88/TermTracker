@@ -7,6 +7,9 @@ using TermTracker.Services;
 
 namespace TermTracker.ViewModels.Assessments
 {
+    /// <summary>
+    /// View model for creating a new assessment within a course.
+    /// </summary>
     public class AddAssessmentViewModel : BaseViewModel
     {
         private Course _course;
@@ -24,6 +27,10 @@ namespace TermTracker.ViewModels.Assessments
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
 
+        /// <summary>
+        /// Creates the view model for the given course.
+        /// </summary>
+        /// <param name="course">Parent course.</param>
         public AddAssessmentViewModel(Course course)
         {
             _course = course;
