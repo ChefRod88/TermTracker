@@ -6,6 +6,10 @@ using TermTracker.Services;
 
 namespace TermTracker.ViewModels.Terms
 {
+    /// <summary>
+    /// View model for the <see cref="AddTermPage"/> allowing users to create
+    /// a new term.
+    /// </summary>
     public class AddTermViewModel : BaseViewModel
     {
         public string Title { get; set; }
@@ -15,6 +19,9 @@ namespace TermTracker.ViewModels.Terms
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
 
+        /// <summary>
+        /// Initializes commands used by the Add Term page.
+        /// </summary>
         public AddTermViewModel()
         {
             SaveCommand = new Command(async () =>

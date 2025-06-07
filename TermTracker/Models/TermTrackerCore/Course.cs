@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace TermTracker.Models.TermTrackerCore
 {
+    /// <summary>
+    /// Represents a course that belongs to a specific term.
+    /// </summary>
     public class Course
     {
         [PrimaryKey, AutoIncrement]
@@ -22,3 +25,4 @@ namespace TermTracker.Models.TermTrackerCore
         public string Notes { get; set; }
     }
 }
+

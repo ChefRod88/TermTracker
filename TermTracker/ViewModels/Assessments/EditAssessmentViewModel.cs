@@ -6,6 +6,9 @@ using TermTracker.Services;
 
 namespace TermTracker.ViewModels.Assessments
 {
+    /// <summary>
+    /// View model for editing an existing assessment.
+    /// </summary>
     public class EditAssessmentViewModel : BaseViewModel
     {
         private Assessment _assessment;
@@ -23,6 +26,10 @@ namespace TermTracker.ViewModels.Assessments
         public ICommand UpdateCommand { get; }
         public ICommand DeleteCommand { get; }
 
+        /// <summary>
+        /// Initializes the view model with an existing assessment.
+        /// </summary>
+        /// <param name="assessment">Assessment to edit.</param>
         public EditAssessmentViewModel(Assessment assessment)
         {
             _assessment = assessment;

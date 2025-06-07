@@ -7,6 +7,10 @@ using TermTracker.Views;
 
 namespace TermTracker.ViewModels.Courses
 {
+    /// <summary>
+    /// View model used by <see cref="AddCoursePage"/> for creating a new
+    /// course within a term.
+    /// </summary>
     public class AddCourseViewModel : BaseViewModel
     {
         private Term _term;
@@ -25,12 +29,18 @@ namespace TermTracker.ViewModels.Courses
 
         public ICommand SaveCommand { get; }
 
+        /// <summary>
+        /// Creates a new instance for the specified term.
+        /// </summary>
+        /// <param name="term">Parent term to associate with the course.</param>
         public AddCourseViewModel(Term term)
         {
             _term = term;
 
+            // command executed when the user taps "Save" on the Add Course page
             SaveCommand = new Command(async () =>
             {
+                // basic validation
                 if (string.IsNullOrWhiteSpace(Title) || string.IsNullOrWhiteSpace(SelectedStatus))
                 {
                     await Shell.Current.DisplayAlert("Error", "Please enter course title and status.", "OK");
@@ -50,8 +60,8 @@ namespace TermTracker.ViewModels.Courses
                 var db = await DatabaseService.GetConnection();
                 await db.InsertAsync(newCourse);
 
-                await Shell.Current.GoToAsync(nameof(AddCoursePage));
-                // Navigate back
+                // return to the previous page (Term detail)
+                await Shell.Current.GoToAsync("..");
             });
         }
      

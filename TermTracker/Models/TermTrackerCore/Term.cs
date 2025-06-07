@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace TermTracker.Models.TermTrackerCore
 {
+    /// <summary>
+    /// Represents an academic term in the local SQLite database.
+    /// </summary>
     public class Term
     {
         [PrimaryKey, AutoIncrement]
@@ -26,3 +29,4 @@ namespace TermTracker.Models.TermTrackerCore
         }
     }
 }
+

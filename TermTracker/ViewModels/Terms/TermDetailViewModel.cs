@@ -9,6 +9,9 @@ using TermTracker.Views;
 
 namespace TermTracker.ViewModels.Terms
 {
+    /// <summary>
+    /// View model for displaying a single term and its courses.
+    /// </summary>
     public class TermDetailViewModel : BaseViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -33,6 +36,10 @@ namespace TermTracker.ViewModels.Terms
 
         
 
+        /// <summary>
+        /// Creates the view model for the given term and loads courses.
+        /// </summary>
+        /// <param name="term">The term to display.</param>
         public TermDetailViewModel(Term term)
         {
             _term = term;
@@ -40,6 +47,9 @@ namespace TermTracker.ViewModels.Terms
             LoadCourses();
         }
 
+        /// <summary>
+        /// Loads all courses for the term from the database.
+        /// </summary>
         public async void LoadCourses()
         {
             var db = await DatabaseService.GetConnection();
@@ -52,14 +62,20 @@ namespace TermTracker.ViewModels.Terms
                 Courses.Add(course);
         }
 
+        /// <summary>
+        /// Navigates to the add course page for this term.
+        /// </summary>
         public ICommand AddCourseCommand => new Command(async () =>
         {
             await Shell.Current.GoToAsync(nameof(AddCoursePage), true, new Dictionary<string, object>
-    {
-        { "SelectedTerm", _term }
-    });
+            {
+                { "SelectedTerm", _term }
+            });
         });
 
+        /// <summary>
+        /// Opens the edit screen for the currently selected course.
+        /// </summary>
         public ICommand UpdateSelectedCourseCommand => new Command(async () =>
         {
             if (SelectedCourse == null)
@@ -69,11 +85,14 @@ namespace TermTracker.ViewModels.Terms
             }
 
             await Shell.Current.GoToAsync(nameof(EditCoursePage), true, new Dictionary<string, object>
-    {
-        { "SelectedCourse", SelectedCourse }
-    });
+            {
+                { "SelectedCourse", SelectedCourse }
+            });
         });
 
+        /// <summary>
+        /// Deletes the currently selected course after user confirmation.
+        /// </summary>
         public ICommand DeleteSelectedCourseCommand => new Command(async () =>
         {
             if (SelectedCourse == null)
@@ -92,11 +111,17 @@ namespace TermTracker.ViewModels.Terms
             SelectedCourse = null;
         });
 
+        /// <summary>
+        /// Sets the selected course from the UI list.
+        /// </summary>
         public ICommand SelectCourseCommand => new Command<Course>(course =>
         {
             SelectedCourse = course;
         });
 
+        /// <summary>
+        /// Opens the assessment list for a given course.
+        /// </summary>
         public ICommand ManageAssessmentsCommand => new Command<Course>(async (selectedCourse) =>
         {
             if (selectedCourse != null)

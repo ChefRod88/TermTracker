@@ -9,6 +9,9 @@ using System.Windows.Input;
 
 namespace TermTracker.ViewModels.StudentLounge
 {
+    /// <summary>
+    /// View model that handles real-time chat via SignalR.
+    /// </summary>
     public class ChatRoomViewModel : BaseViewModel
     {
         private HubConnection _hubConnection;
@@ -17,6 +20,9 @@ namespace TermTracker.ViewModels.StudentLounge
 
         public ICommand SendMessageCommand { get; }
 
+        /// <summary>
+        /// Creates the view model and connects to the chat hub.
+        /// </summary>
         public ChatRoomViewModel()
         {
             SendMessageCommand = new Command(async () => await SendMessage());
@@ -24,6 +30,10 @@ namespace TermTracker.ViewModels.StudentLounge
             ConnectToChat();
         }
 
+        /// <summary>
+        /// Establishes the SignalR connection and subscribes to incoming
+        /// messages from the server.
+        /// </summary>
         private async void ConnectToChat()
         {
             _hubConnection = new HubConnectionBuilder()
@@ -38,7 +48,7 @@ namespace TermTracker.ViewModels.StudentLounge
                     Messages.Add(new ChatMessage
                     {
                         Sender = user,
-                        Message = message,
+                        Content = message,
                         Timestamp = DateTime.Now
                     });
                 });
@@ -54,6 +64,9 @@ namespace TermTracker.ViewModels.StudentLounge
             }
         }
 
+        /// <summary>
+        /// Sends <see cref="NewMessage"/> to the chat hub.
+        /// </summary>
         private async Task SendMessage()
         {
             if (string.IsNullOrWhiteSpace(NewMessage))
